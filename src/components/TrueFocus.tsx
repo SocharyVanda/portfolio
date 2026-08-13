@@ -11,6 +11,7 @@ export default function TrueFocus({
   sentence = "True Focus",
   separator = " ",
   manualMode = false,
+  loop = true,
   blurAmount = 6,
   borderColor = "rgb(var(--accent))",
   glowColor = "rgb(var(--accent) / 0.55)",
@@ -22,6 +23,9 @@ export default function TrueFocus({
   sentence?: string;
   separator?: string;
   manualMode?: boolean;
+  /** When false, the animation runs through the words once and then
+   * settles with everything in focus, instead of cycling forever. */
+  loop?: boolean;
   blurAmount?: number;
   borderColor?: string;
   glowColor?: string;
@@ -33,18 +37,31 @@ export default function TrueFocus({
   const words = sentence.split(separator);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [lastActiveIndex, setLastActiveIndex] = useState<number | null>(null);
+  const [finished, setFinished] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const wordRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const [focusRect, setFocusRect] = useState({ x: 0, y: 0, width: 0, height: 0 });
 
   useEffect(() => {
-    if (manualMode) return;
+    if (manualMode || finished) return;
     const interval = setInterval(
-      () => setCurrentIndex((prev) => (prev + 1) % words.length),
+      () => {
+        setCurrentIndex((prev) => {
+          const next = prev + 1;
+          if (next >= words.length) {
+            if (!loop) {
+              setFinished(true);
+              return prev;
+            }
+            return 0;
+          }
+          return next;
+        });
+      },
       (animationDuration + pauseBetweenAnimations) * 1000,
     );
     return () => clearInterval(interval);
-  }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
+  }, [manualMode, loop, finished, animationDuration, pauseBetweenAnimations, words.length]);
 
   useEffect(() => {
     const word = wordRefs.current[currentIndex];
@@ -79,7 +96,7 @@ export default function TrueFocus({
       style={style}
     >
       {words.map((word, index) => {
-        const isActive = index === currentIndex;
+        const isActive = finished || index === currentIndex;
         return (
           <span
             key={index}
@@ -110,7 +127,7 @@ export default function TrueFocus({
           y: focusRect.y,
           width: focusRect.width,
           height: focusRect.height,
-          opacity: focusRect.width ? 1 : 0,
+          opacity: finished ? 0 : focusRect.width ? 1 : 0,
         }}
         transition={{ duration: animationDuration }}
         style={

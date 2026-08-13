@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { projects, type Project } from "../data/content";
 import ProjectModal from "./ProjectModal";
-import TrueFocus from "./TrueFocus";
 
 export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
@@ -9,11 +8,7 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-5xl">
-        <TrueFocus
-          sentence="Projects"
-          className="mb-2 text-4xl font-semibold sm:text-5xl"
-          style={{ justifyContent: "flex-start" }}
-        />
+        <h2 className="mb-2 text-4xl font-semibold sm:text-5xl">Projects</h2>
         <p className="mb-14 max-w-lg text-[rgb(var(--ink-dim))]">
           Click a project to open it. Write-ups are in progress — swap in
           your own case studies anytime.

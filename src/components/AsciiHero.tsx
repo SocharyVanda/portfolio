@@ -1,6 +1,7 @@
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "../data/content";
 import { portraitAscii } from "../data/asciiArt";
+import DotMatrix from "./DotMatrix";
 import TrueFocus from "./TrueFocus";
 
 export default function AsciiHero() {
@@ -17,8 +18,10 @@ export default function AsciiHero() {
 
         <TrueFocus
           sentence="Curious by design, precise by practice."
-          animationDuration={0.6}
-          pauseBetweenAnimations={1.4}
+          loop={false}
+          blurAmount={5}
+          animationDuration={0.45}
+          pauseBetweenAnimations={0.35}
           className="font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl"
         />
 
@@ -37,18 +40,27 @@ export default function AsciiHero() {
         </a>
       </div>
 
-      <div className="mx-auto mt-14 max-w-5xl">
-        <pre
-          aria-hidden
-          className="select-none overflow-hidden text-center leading-none tracking-[-0.02em]"
-          style={{
-            color: "rgb(var(--ink))",
-            fontFamily: "var(--font-mono)",
-            fontSize: "clamp(3.5px, 0.85vw, 8.5px)",
-          }}
+      <div className="mx-auto mt-14 grid max-w-5xl items-center gap-6 sm:grid-cols-2 sm:gap-8">
+        <div
+          className="flex aspect-square items-center justify-center rounded-3xl p-8"
+          style={{ background: "#0b0b0b" }}
         >
-          {portraitAscii}
-        </pre>
+          <DotMatrix />
+        </div>
+
+        <div className="flex aspect-square items-center justify-center overflow-hidden">
+          <pre
+            aria-hidden
+            className="select-none text-center leading-none tracking-[-0.02em]"
+            style={{
+              color: "rgb(var(--ink))",
+              fontFamily: "var(--font-mono)",
+              fontSize: "clamp(2.2px, 1.05vw, 5.5px)",
+            }}
+          >
+            {portraitAscii}
+          </pre>
+        </div>
         <p className="sr-only">
           ASCII-art portrait of {profile.name}, generated from a photo.
         </p>
