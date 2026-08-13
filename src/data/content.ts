@@ -89,59 +89,66 @@ export const experience = [
 ];
 
 export type Project = {
-  chapter: string;
+  icon: string;
   title: string;
-  subtitle: string;
-  accent: string;
+  tags: string[];
+  image: string;
+  projectType?: string;
+  client?: string;
+  year?: string;
+  credits?: string;
   writing: string;
 };
 
+// Pulled from your Notion projects gallery. Fill in client/year for any
+// project once you have those details — fields left blank are simply
+// skipped in the detail view.
 export const projects: Project[] = [
   {
-    chapter: "Chapter 1",
-    title: "UX/UI Case Study",
-    subtitle: "MIS Challenge — First Runner-Up",
-    accent: "#f2c14e",
+    icon: "🧴",
+    title: "Skincare Website",
+    tags: ["Researcher", "Designer", "Team"],
+    image: "/projects/skincare.jpg",
+    projectType: "E-commerce website",
+    credits: "Team 8",
     writing:
-      "Write about the MIS challenge project here — the problem, your research, wireframes, and the final design decisions.",
+      "Write about the GlowSkin skincare e-commerce project here — the brief, your research, the UI decisions, and what you were responsible for as part of Team 8.",
   },
   {
-    chapter: "Chapter 2",
-    title: "Front-End Build",
-    subtitle: "Above & Beyond — Front-end Program",
-    accent: "#e0574c",
+    icon: "🚗",
+    title: "Tesla Clone",
+    tags: ["Researcher", "Designer", "Team"],
+    image: "/projects/tesla.jpg",
+    projectType: "Website clone",
     writing:
-      "Write about a front-end project you shipped during the program — stack used, challenges, and what you'd improve.",
+      "Write about rebuilding the Tesla site — what you focused on cloning (layout, motion, responsiveness), and what you learned from studying the original.",
   },
   {
-    chapter: "Chapter 3",
-    title: "Product Design",
-    subtitle: "Figma prototype",
-    accent: "#4e8bf2",
+    icon: "☕",
+    title: "BrewFinder",
+    tags: [],
+    image: "/projects/brewfinder.jpg",
+    projectType: "Mobile app wireframe",
+    credits: "KjeAddict",
     writing:
-      "Write about a Figma prototype — user research, flows, and the prototype link.",
+      "Write about the BrewFinder wireframes here — the problem it solves, the flows you designed, and how the deal/discount feature works.",
   },
   {
-    chapter: "Chapter 4",
-    title: "Data Science Exploration",
-    subtitle: "Python notebook",
-    accent: "#8b8b8b",
+    icon: "💍",
+    title: "Wedpod",
+    tags: [],
+    image: "/projects/wedpod.jpg",
+    projectType: "Wedding planning website",
     writing:
-      "Write about a data science exercise — dataset, approach, and findings.",
+      "Write about Wedpod — the concept (making wedding planning more memorable), the venues/vendor booking flow, and your role in the design.",
   },
   {
-    chapter: "Chapter 5",
-    title: "Teaching & Mentorship",
-    subtitle: "S.E.T tutoring",
-    accent: "#3fb28f",
+    icon: "🚌",
+    title: "BookLan",
+    tags: [],
+    image: "/projects/booklan.jpg",
+    projectType: "Brand identity",
     writing:
-      "Write about your teaching experience at S.E.T — what you taught and what you learned from it.",
-  },
-  {
-    chapter: "Chapter 6",
-    title: "Personal Project",
-    subtitle: "Coming soon",
-    accent: "#8a5cf6",
-    writing: "Write about your next project here.",
+      "Write about the BookLan logo/brand identity — the concept behind the mark, the color choices, and where else the brand system was applied.",
   },
 ];
