@@ -9,15 +9,12 @@ export default function MusicPlayer() {
     <div className="fixed bottom-6 left-6 z-40 flex items-end gap-3">
       {open && (
         <div
-          className="overflow-hidden rounded-2xl border shadow-lg"
-          style={{
-            borderColor: "rgb(var(--line))",
-            background: "rgb(var(--bg-elevated))",
-          }}
+          className="overflow-hidden rounded-2xl shadow-lg"
+          style={{ lineHeight: 0 }}
         >
           <iframe
             title="Spotify player"
-            src={`https://open.spotify.com/embed/track/${spotifyTrackId}?utm_source=generator&theme=0`}
+            src={`https://open.spotify.com/embed/track/${spotifyTrackId}?utm_source=generator`}
             width="300"
             height="152"
             style={{ border: 0, display: "block" }}
