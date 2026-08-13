@@ -15,7 +15,7 @@ export default function InfoList({ items }: { items: InfoItem[] }) {
         <div
           key={item.title + item.date}
           className="flex flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
-          style={{ borderColor: "rgb(var(--line))" }}
+          style={{ borderColor: "rgb(var(--line-soft))" }}
         >
           <div className="flex items-start gap-3">
             <span

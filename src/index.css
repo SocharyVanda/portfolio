@@ -6,29 +6,33 @@
 }
 
 :root {
-  color-scheme: dark;
-
-  --bg: 8 8 9;
-  --bg-elevated: 17 17 19;
-  --bg-soft: 24 24 27;
-  --ink: 245 245 240;
-  --ink-dim: 161 161 170;
-  --line: 39 39 42;
-  --accent: 168 255 96;
-  --accent-ink: 8 8 9;
-}
-
-:root[data-theme="light"] {
   color-scheme: light;
 
-  --bg: 245 245 240;
-  --bg-elevated: 255 255 255;
-  --bg-soft: 236 236 230;
-  --ink: 12 12 13;
-  --ink-dim: 90 90 96;
-  --line: 214 214 208;
-  --accent: 20 20 22;
-  --accent-ink: 245 245 240;
+  /* cream terminal — default */
+  --bg: 232 224 195;
+  --bg-elevated: 246 242 227;
+  --bg-soft: 221 212 179;
+  --ink: 22 20 14;
+  --ink-dim: 96 89 63;
+  --line: 22 20 14;
+  --line-soft: 178 167 128;
+  --accent: 107 110 46;
+  --accent-ink: 246 242 227;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* terminal, inverted */
+  --bg: 15 14 11;
+  --bg-elevated: 23 22 17;
+  --bg-soft: 33 31 24;
+  --ink: 232 225 198;
+  --ink-dim: 168 158 122;
+  --line: 232 225 198;
+  --line-soft: 63 59 45;
+  --accent: 158 224 105;
+  --accent-ink: 15 14 11;
 }
 
 * {
@@ -44,7 +48,7 @@ body {
   margin: 0;
   background: rgb(var(--bg));
   color: rgb(var(--ink));
-  font-family: var(--font-display);
+  font-family: var(--font-mono);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -71,7 +75,7 @@ body {
 }
 
 .dotted-bg {
-  background-image: radial-gradient(rgb(var(--line)) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(var(--line-soft)) 1px, transparent 1px);
   background-size: 22px 22px;
 }
 

@@ -1,9 +1,9 @@
 import About from "./components/About";
 import Achievements from "./components/Achievements";
+import AsciiHero from "./components/AsciiHero";
 import Contact from "./components/Contact";
 import Experience from "./components/Experience";
 import GitHubStats from "./components/GitHubStats";
-import Hero from "./components/Hero";
 import MusicPlayer from "./components/MusicPlayer";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
@@ -17,7 +17,7 @@ export default function App() {
     <div className="min-h-screen">
       <Navbar theme={theme} onToggleTheme={toggle} />
       <main>
-        <Hero />
+        <AsciiHero />
         <div className="dotted-bg">
           <About />
           <Skills />
