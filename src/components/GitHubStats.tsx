@@ -116,11 +116,7 @@ export default function GitHubStats() {
   }, []);
 
   return (
-    <section
-      id="github"
-      className="px-6 py-24 sm:px-12 sm:py-32"
-      style={{ background: "rgb(var(--bg-elevated))" }}
-    >
+    <section id="github" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 flex flex-wrap items-end justify-between gap-4">
           <div>

@@ -36,8 +36,9 @@ write-ups, and swap `accent` for a different card color.
 
 ### Music player
 
-Drop an MP3 at `public/audio/theme-song.mp3` and the floating play button
-(bottom-left) will pick it up automatically — no code changes needed.
+The floating button (bottom-left) opens an embedded Spotify player. Swap the
+song by changing `spotifyTrackId` in `src/data/content.ts` — grab the id from
+the track's share URL: `https://open.spotify.com/track/<id>`.
 
 ### Résumé / CV
 

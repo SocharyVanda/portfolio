@@ -7,7 +7,7 @@ export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
 
   return (
-    <section id="projects" className="relative px-6 py-24 sm:px-12 sm:py-32" style={{ background: "rgb(var(--bg))" }}>
+    <section id="projects" className="relative px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionKicker index="02" label="Projects" />
         <h2 className="mb-2 text-4xl font-semibold sm:text-5xl">Content</h2>

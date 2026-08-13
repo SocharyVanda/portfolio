@@ -10,11 +10,7 @@ const GROUPS = [
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="px-6 py-24 sm:px-12 sm:py-32"
-      style={{ background: "rgb(var(--bg-elevated))" }}
-    >
+    <section id="skills" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <SectionKicker index="03" label="Skills" />
         <h2 className="mb-14 text-4xl font-semibold sm:text-5xl">
