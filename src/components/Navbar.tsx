@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { profile, links } from "../data/content";
 import { GithubIcon } from "./icons";
+import GooeyNav from "./GooeyNav";
 import type { Theme } from "../hooks/useTheme";
 
 const NAV_ITEMS = [
@@ -34,12 +35,15 @@ export default function Navbar({
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
-        className={`flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border px-4 py-2.5 backdrop-blur-xl transition-shadow ${
+        className={`flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border px-4 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-shadow ${
           scrolled ? "shadow-lg shadow-black/10" : ""
         }`}
         style={{
-          borderColor: "rgb(var(--line))",
-          background: "rgb(var(--bg-elevated) / 0.75)",
+          borderColor: "rgb(var(--line-soft))",
+          background: "rgb(var(--bg-elevated) / 0.55)",
+          boxShadow: scrolled
+            ? undefined
+            : "inset 0 1px 0 rgb(var(--bg) / 0.6)",
         }}
       >
         <a
@@ -53,16 +57,8 @@ export default function Navbar({
           {profile.handle}
         </a>
 
-        <div className="hidden items-center gap-1 lg:flex">
-          {NAV_ITEMS.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-3 py-1.5 text-sm text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
-            >
-              {item.label}
-            </a>
-          ))}
+        <div className="hidden lg:block">
+          <GooeyNav items={NAV_ITEMS} animationTime={600} timeVariance={300} />
         </div>
 
         <div className="flex shrink-0 items-center gap-1">
