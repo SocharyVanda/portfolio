@@ -1,15 +1,15 @@
 import { profile } from "../data/content";
-import SectionKicker from "./SectionKicker";
+import TrueFocus from "./TrueFocus";
 
 export default function About() {
   return (
     <section id="about" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-2xl">
-        <SectionKicker index="01" label="About" />
-        <h2 className="text-balance text-4xl font-semibold leading-[1.1] sm:text-5xl">
-          Curious, analytical
-          <br />& creative.
-        </h2>
+        <TrueFocus
+          sentence="Curious, analytical & creative."
+          className="text-4xl font-semibold leading-[1.1] sm:text-5xl"
+          style={{ justifyContent: "flex-start" }}
+        />
         <p className="mt-6 leading-relaxed text-[rgb(var(--ink-dim))]">
           {profile.bio}
         </p>

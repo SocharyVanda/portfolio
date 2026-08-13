@@ -18,15 +18,13 @@ export default function App() {
       <Navbar theme={theme} onToggleTheme={toggle} />
       <main>
         <AsciiHero />
-        <div className="dotted-bg">
-          <About />
-          <Skills />
-          <Projects />
-          <Experience />
-          <GitHubStats />
-          <Achievements />
-          <Contact />
-        </div>
+        <About />
+        <Skills />
+        <Projects />
+        <Experience />
+        <GitHubStats />
+        <Achievements />
+        <Contact />
       </main>
       <MusicPlayer />
     </div>

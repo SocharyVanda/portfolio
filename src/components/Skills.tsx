@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import { Users } from "lucide-react";
-import SectionKicker from "./SectionKicker";
 import SkillTile from "./SkillTile";
+import TrueFocus from "./TrueFocus";
 
 const TILES: {
   name: string;
@@ -31,10 +31,11 @@ export default function Skills() {
   return (
     <section id="skills" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-6xl">
-        <SectionKicker index="03" label="Stack" />
-        <h2 className="mb-3 text-4xl font-semibold sm:text-5xl">
-          Tools & skills
-        </h2>
+        <TrueFocus
+          sentence="Tools & skills"
+          className="mb-3 text-4xl font-semibold sm:text-5xl"
+          style={{ justifyContent: "flex-start" }}
+        />
         <p className="mb-14 max-w-lg text-[rgb(var(--ink-dim))]">
           What I reach for to take a project from sketch to ship. Hover or
           tap any icon to see its name.

@@ -1,7 +1,7 @@
 import { ArrowRight, FileText, Mail, Send } from "lucide-react";
 import { contact, links, profile } from "../data/content";
-import SectionKicker from "./SectionKicker";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import TrueFocus from "./TrueFocus";
 
 export default function Contact() {
   const socials = [
@@ -13,11 +13,10 @@ export default function Contact() {
   return (
     <section id="contact" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
-        <SectionKicker index="07" label="Contact" />
-        <h2 className="text-balance text-4xl font-semibold sm:text-6xl">
-          Let's build something
-          <br /> worth designing.
-        </h2>
+        <TrueFocus
+          sentence="Let's build something worth designing."
+          className="text-4xl font-semibold sm:text-6xl"
+        />
         <p className="mt-6 max-w-md text-[rgb(var(--ink-dim))]">
           Open to internships, collaborations and UX/UI work. Reach out — I
           usually reply within a day.

@@ -1,12 +1,13 @@
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "../data/content";
 import { portraitAscii } from "../data/asciiArt";
+import TrueFocus from "./TrueFocus";
 
 export default function AsciiHero() {
   return (
     <section
       id="top"
-      className="dotted-bg relative overflow-hidden px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
+      className="relative overflow-hidden px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
     >
       <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
         <p className="mb-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]" style={{ borderColor: "rgb(var(--line))" }}>
@@ -14,11 +15,12 @@ export default function AsciiHero() {
           CS Student · UX/UI Designer
         </p>
 
-        <h1 className="font-display text-balance text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl">
-          Curious by design,
-          <br />
-          precise by practice.
-        </h1>
+        <TrueFocus
+          sentence="Curious by design, precise by practice."
+          animationDuration={0.6}
+          pauseBetweenAnimations={1.4}
+          className="font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl"
+        />
 
         <p className="mt-5 max-w-lg text-sm leading-relaxed text-[rgb(var(--ink-dim))] sm:text-base">
           {profile.tagline} From code to canvas, I explore where computer
