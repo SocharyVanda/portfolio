@@ -13,13 +13,20 @@ export const contact = {
   emails: ["vandasochary@gmail.com", "svanda@paragoniu.edu.kh"],
 };
 
-// Track played by the floating music player. Swap `src` (a file in
-// public/audio/) plus the title/artist to change the song.
-export const nowPlaying = {
-  title: "Mrs Magic (Strings Version)",
-  artist: "Strawberry Guy",
-  src: "/audio/mrs-magic.mp3",
-};
+// Playlist played by the floating music player. Add/remove tracks here —
+// each `src` is a file in public/audio/.
+export const playlist = [
+  {
+    title: "Mrs Magic (Strings Version)",
+    artist: "Strawberry Guy",
+    src: "/audio/mrs-magic.mp3",
+  },
+  {
+    title: "Je Te Laisserai Des Mots (Extended)",
+    artist: "",
+    src: "/audio/je-te-laisserai-des-mots.mp3",
+  },
+];
 
 export const links = {
   github: "https://github.com/SocharyVanda",
