@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { LayoutGrid, List } from "lucide-react";
 import { projects, type Project } from "../data/content";
+import Folder from "./Folder";
 import ProjectModal from "./ProjectModal";
 
 const FILTERS = ["All Projects", "Researcher", "Designer", "Team"];
@@ -74,36 +75,26 @@ export default function Projects() {
               ))}
             </div>
 
-            {/* icon grid */}
-            <div className="flex-1 p-6">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-6 sm:grid-cols-3 md:grid-cols-4">
+            {/* folder grid */}
+            <div className="flex-1 p-6 pt-10">
+              <div className="grid grid-cols-2 gap-x-4 gap-y-14 sm:grid-cols-3 md:grid-cols-4">
                 {filtered.map((project) => (
-                  <button
+                  <div
                     key={project.title}
-                    onClick={() => setActive(project)}
-                    className="group flex flex-col items-center gap-2 rounded-xl p-2 text-center transition-colors hover:bg-[#3d7eff]/10"
+                    className="flex flex-col items-center gap-4"
                   >
-                    <span className="relative flex aspect-square w-full items-center justify-center overflow-hidden rounded-lg shadow-sm transition-transform group-hover:-translate-y-0.5">
-                      <img
-                        src={project.image}
-                        alt=""
-                        className="h-full w-full object-cover"
-                        loading="lazy"
+                    <div className="flex h-24 w-full items-center justify-center">
+                      <Folder
+                        color={project.color}
+                        size={1.2}
+                        onOpen={() => setActive(project)}
                       />
-                      <span
-                        className="absolute -bottom-1.5 -right-1.5 flex h-7 w-7 items-center justify-center rounded-full border text-sm shadow-sm"
-                        style={{
-                          borderColor: "rgb(var(--line))",
-                          background: "rgb(var(--bg-elevated))",
-                        }}
-                      >
-                        {project.icon}
-                      </span>
-                    </span>
-                    <span className="text-xs font-medium">
+                    </div>
+                    <span className="flex items-center gap-1.5 text-sm font-medium">
+                      <span aria-hidden>{project.icon}</span>
                       {project.title}
                     </span>
-                  </button>
+                  </div>
                 ))}
               </div>
               {filtered.length === 0 && (

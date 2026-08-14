@@ -93,62 +93,85 @@ export type Project = {
   title: string;
   tags: string[];
   image: string;
+  color: string;
   projectType?: string;
   client?: string;
   year?: string;
   credits?: string;
+  tools?: string[];
   writing: string;
+  reflection?: string[];
+  link?: { label: string; href: string };
 };
 
-// Pulled from your Notion projects gallery. Fill in client/year for any
-// project once you have those details — fields left blank are simply
-// skipped in the detail view.
+// Pulled straight from your Notion project pages. Fields left blank (client,
+// year, tools, reflection, link) are simply skipped in the detail view —
+// fill them in per project whenever you have them.
 export const projects: Project[] = [
   {
     icon: "🧴",
     title: "Skincare Website",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/skincare.jpg",
-    projectType: "E-commerce website",
+    color: "#3f7d58",
+    projectType: "E-commerce website — MIS Challenge",
     credits: "Team 8",
+    tools: ["Notion", "Figma"],
     writing:
-      "Write about the GlowSkin skincare e-commerce project here — the brief, your research, the UI decisions, and what you were responsible for as part of Team 8.",
+      "This project was done as a team whose main goal is to create a skincare website. Before the design stage, we as a team work together to conduct a user research to identify user pain point, our target audience and consider users experience after they click on our website.",
+    reflection: [
+      "The project taught me a lot about team work.",
+      "I get to learn more about how to use various tools in Figma due to the trial and errors and also being guided by those who are more experience than I am.",
+    ],
   },
   {
     icon: "🚗",
     title: "Tesla Clone",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/tesla.jpg",
+    color: "#b91c1c",
     projectType: "Website clone",
     writing:
-      "Write about rebuilding the Tesla site — what you focused on cloning (layout, motion, responsiveness), and what you learned from studying the original.",
+      "Write about rebuilding the Tesla site here — what you focused on cloning (layout, motion, responsiveness), and what you learned from studying the original.",
   },
   {
     icon: "☕",
     title: "BrewFinder",
     tags: [],
     image: "/projects/brewfinder.jpg",
+    color: "#7f1d1d",
     projectType: "Mobile app wireframe",
     credits: "KjeAddict",
+    tools: ["Notion", "Figma", "Discord for communication"],
     writing:
-      "Write about the BrewFinder wireframes here — the problem it solves, the flows you designed, and how the deal/discount feature works.",
+      "BrewFinder is an app that helps cafe-hopper find the most personalized cafe shops.",
+    reflection: [
+      "The project taught me a lot about team work.",
+      "I get to learn more about how to use various tools in Figma due to the trial and errors and also being guided by those who are more experience than I am.",
+    ],
   },
   {
     icon: "💍",
     title: "Wedpod",
     tags: [],
     image: "/projects/wedpod.jpg",
+    color: "#92400e",
     projectType: "Wedding planning website",
     writing:
-      "Write about Wedpod — the concept (making wedding planning more memorable), the venues/vendor booking flow, and your role in the design.",
+      "WedPod is a wedding planner that enables the groom and bride to plan their wedding venue.",
   },
   {
     icon: "🚌",
     title: "BookLan",
     tags: [],
     image: "/projects/booklan.jpg",
-    projectType: "Brand identity",
+    color: "#1e3a8a",
+    projectType: "Mobile app",
     writing:
-      "Write about the BookLan logo/brand identity — the concept behind the mark, the color choices, and where else the brand system was applied.",
+      "BookLan is a mobile application that helps people who are on the road see the incoming bus and book them on the spot.",
+    link: {
+      label: "View Figma prototype",
+      href: "https://www.figma.com/design/e6fx794L1o7bO24l9gcjP2/MIS-Challenge---2026?node-id=372-25570&t=bXyNLY0IRSAJ4ZsM-1",
+    },
   },
 ];

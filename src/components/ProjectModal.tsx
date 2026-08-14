@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "lucide-react";
+import { ArrowUpRight, X } from "lucide-react";
 import type { Project } from "../data/content";
 
 export default function ProjectModal({
@@ -89,6 +89,20 @@ export default function ProjectModal({
                 <h3 className="text-3xl font-semibold sm:text-4xl">
                   {project.icon} {project.title}
                 </h3>
+
+                {project.tags.length > 0 && (
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full bg-neutral-100 px-2.5 py-1 text-xs font-medium text-neutral-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
                 <p className="mt-4 max-w-xl leading-relaxed text-neutral-600">
                   {project.writing}
                 </p>
@@ -104,6 +118,44 @@ export default function ProjectModal({
                       </div>
                     ))}
                   </div>
+                )}
+
+                {project.tools && project.tools.length > 0 && (
+                  <div className="mt-6 border-t border-neutral-200 pt-6">
+                    <p className="mb-2 text-sm font-semibold text-neutral-900">
+                      Tools
+                    </p>
+                    <ul className="list-disc space-y-1 pl-5 text-sm text-neutral-600">
+                      {project.tools.map((tool) => (
+                        <li key={tool}>{tool}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {project.reflection && project.reflection.length > 0 && (
+                  <div className="mt-6 border-t border-neutral-200 pt-6">
+                    <p className="mb-2 text-sm font-semibold text-neutral-900">
+                      Reflection
+                    </p>
+                    <ul className="list-disc space-y-1 pl-5 text-sm text-neutral-600">
+                      {project.reflection.map((r) => (
+                        <li key={r}>{r}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {project.link && (
+                  <a
+                    href={project.link.href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline"
+                  >
+                    {project.link.label}
+                    <ArrowUpRight size={14} />
+                  </a>
                 )}
 
                 <div className="mt-8 overflow-hidden rounded-xl border border-neutral-200">
