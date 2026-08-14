@@ -407,13 +407,16 @@ function onPointerLeaveDocument() {
 
 function onTouchStart(e: TouchEvent) {
   if (e.touches.length > 0) {
-    e.preventDefault();
     pointerPosition.x = e.touches[0].clientX;
     pointerPosition.y = e.touches[0].clientY;
 
+    // Only take over the gesture (and block page scroll) when the touch
+    // actually starts on a registered canvas — a body-wide listener must
+    // not preventDefault() on every touch everywhere on the page.
     for (const [elem, item] of interactionRegistry) {
       const rect = elem.getBoundingClientRect();
       if (isPointerInRect(rect)) {
+        e.preventDefault();
         item.touching = true;
         updatePointerPosition(item, rect);
         if (!item.hover) {
@@ -428,15 +431,16 @@ function onTouchStart(e: TouchEvent) {
 
 function onTouchMove(e: TouchEvent) {
   if (e.touches.length > 0) {
-    e.preventDefault();
     pointerPosition.x = e.touches[0].clientX;
     pointerPosition.y = e.touches[0].clientY;
 
+    let overRegistered = false;
     for (const [elem, item] of interactionRegistry) {
       const rect = elem.getBoundingClientRect();
       updatePointerPosition(item, rect);
 
       if (isPointerInRect(rect)) {
+        overRegistered = true;
         if (!item.hover) {
           item.hover = true;
           item.touching = true;
@@ -444,9 +448,13 @@ function onTouchMove(e: TouchEvent) {
         }
         item.onMove(item);
       } else if (item.hover && item.touching) {
+        overRegistered = true;
         item.onMove(item);
       }
     }
+    // Only swallow the touch while it's still tracking a registered
+    // element, so scrolling elsewhere on the page is never blocked.
+    if (overRegistered) e.preventDefault();
   }
 }
 
