@@ -13,10 +13,13 @@ export const contact = {
   emails: ["vandasochary@gmail.com", "svanda@paragoniu.edu.kh"],
 };
 
-// Spotify track id shown in the floating music player. Swap this to change
-// the song — grab the id from the track's share URL:
-// https://open.spotify.com/track/<id>
-export const spotifyTrackId = "6A1Nh1pP7MzJOWkHAdeagG";
+// Track played by the floating music player. Swap `src` (a file in
+// public/audio/) plus the title/artist to change the song.
+export const nowPlaying = {
+  title: "Mrs Magic (Strings Version)",
+  artist: "Strawberry Guy",
+  src: "/audio/mrs-magic.mp3",
+};
 
 export const links = {
   github: "https://github.com/SocharyVanda",
