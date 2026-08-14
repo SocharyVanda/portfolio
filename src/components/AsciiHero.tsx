@@ -44,7 +44,7 @@ export default function AsciiHero() {
         <a
           href="#projects"
           className="cursor-target mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform hover:-translate-y-0.5"
-          style={{ background: "rgb(var(--button-bg))", color: "rgb(var(--button-ink))" }}
+          style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
         >
           View my work
           <ArrowDownRight size={16} />

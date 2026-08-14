@@ -9,12 +9,8 @@
 :root {
   color-scheme: dark;
 
-  /* the page canvas stays this dark shade in both themes, so the
-     background texture reads the same everywhere; only card surfaces
-     and text switch below */
-  --bg: 8 9 12;
-
   /* dark gaming / modernistic terminal */
+  --bg: 8 9 12;
   --bg-elevated: 15 16 21;
   --bg-soft: 22 24 30;
   --ink: 232 235 240;
@@ -23,14 +19,13 @@
   --line-soft: 42 45 54;
   --accent: 124 92 255;
   --accent-ink: 8 9 12;
-  --button-bg: 232 235 240;
-  --button-ink: 8 9 12;
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
 
-  /* light card surfaces on the same dark page canvas */
+  /* light, same violet accent for brand continuity */
+  --bg: 250 250 252;
   --bg-elevated: 255 255 255;
   --bg-soft: 241 241 246;
   --ink: 17 17 22;
@@ -39,8 +34,6 @@
   --line-soft: 222 222 230;
   --accent: 124 92 255;
   --accent-ink: 255 255 255;
-  --button-bg: 17 17 22;
-  --button-ink: 255 255 255;
 }
 
 * {

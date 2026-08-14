@@ -39,18 +39,16 @@ export default function Navbar({
           scrolled ? "shadow-lg shadow-black/20" : ""
         }`}
         style={{
-          borderColor: "rgb(255 255 255 / 0.15)",
-          background: "rgb(255 255 255 / 0.06)",
+          borderColor: "rgb(var(--line-soft))",
+          background: "rgb(var(--bg-elevated) / 0.45)",
           boxShadow: scrolled
             ? undefined
-            : "inset 0 1px 0 rgb(255 255 255 / 0.1)",
+            : "inset 0 1px 0 rgb(var(--ink) / 0.06)",
         }}
       >
-        {/* This pill is always glass over the fixed dark page canvas, so
-            its own content is fixed light regardless of the site theme. */}
         <a
           href="#top"
-          className="cursor-target flex shrink-0 items-center gap-2 pl-1 text-sm font-medium text-white"
+          className="cursor-target flex shrink-0 items-center gap-2 pl-1 text-sm font-medium text-[rgb(var(--ink))]"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--accent))] opacity-60" />
@@ -69,21 +67,21 @@ export default function Navbar({
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="cursor-target hidden h-8 w-8 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white sm:flex"
+            className="cursor-target hidden h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] sm:flex"
           >
             <GithubIcon size={16} />
           </a>
           <button
             onClick={onToggleTheme}
             aria-label="Toggle theme"
-            className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+            className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
           >
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
-            className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-white/70 transition-colors hover:bg-white/10 hover:text-white lg:hidden"
+            className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] lg:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
