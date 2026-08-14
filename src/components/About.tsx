@@ -1,4 +1,5 @@
 import { profile } from "../data/content";
+import FoldText from "./FoldText";
 
 export default function About() {
   return (
@@ -19,8 +20,14 @@ export default function About() {
 
         <div>
           <h2 className="text-balance text-4xl font-semibold leading-[1.1] sm:text-5xl">
-            Curious, analytical
-            <br />& creative.
+            <FoldText
+              text={"Curious, analytical\n& creative."}
+              splitBy="word"
+              trigger="scroll"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
           </h2>
           <p className="mt-6 leading-relaxed text-[rgb(var(--ink-dim))]">
             {profile.bio}

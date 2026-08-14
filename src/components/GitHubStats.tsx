@@ -1,6 +1,17 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import {
+  Activity,
+  CircleDot,
+  GitBranch,
+  GitCommit,
+  GitFork,
+  GitMerge,
+  GitPullRequest,
+  Star,
+} from "lucide-react";
 import { GithubIcon } from "./icons";
 import { links } from "../data/content";
+import FoldText from "./FoldText";
 
 const USERNAME = "SocharyVanda";
 const CELL = 11;
@@ -12,25 +23,103 @@ type GhEvent = {
   type: string;
   repo: { name: string };
   created_at: string;
-  payload: { ref_type?: string; action?: string };
+  payload: {
+    ref_type?: string;
+    ref?: string;
+    action?: string;
+    number?: number;
+    commits?: { message: string }[];
+    pull_request?: { title?: string; merged?: boolean };
+    issue?: { number?: number; title?: string };
+  };
+};
+type GhProfile = { public_repos: number; followers: number };
+
+type EventVisual = {
+  icon: ReactNode;
+  title: string;
+  description: string;
+  tag?: string;
+  color: string;
 };
 
-function describeEvent(event: GhEvent): string {
+function eventVisual(event: GhEvent): EventVisual {
+  const repo = event.repo.name;
   switch (event.type) {
-    case "PushEvent":
-      return `Pushed to ${event.repo.name}`;
-    case "CreateEvent":
-      return `Created ${event.payload.ref_type ?? "repository"} in ${event.repo.name}`;
+    case "PushEvent": {
+      const branch = event.payload.ref?.replace("refs/heads/", "") ?? "main";
+      const lastCommit = event.payload.commits?.at(-1);
+      return {
+        icon: <GitCommit size={16} />,
+        title: repo,
+        description: lastCommit?.message ?? `Pushed to ${repo}`,
+        tag: branch,
+        color: "#2dd4bf",
+      };
+    }
+    case "PullRequestEvent": {
+      const num = event.payload.number;
+      const merged = event.payload.pull_request?.merged;
+      const verb = merged
+        ? "Merged"
+        : event.payload.action === "opened"
+          ? "Opened"
+          : event.payload.action === "closed"
+            ? "Closed"
+            : "Updated";
+      const title = event.payload.pull_request?.title;
+      return {
+        icon: merged ? <GitMerge size={16} /> : <GitPullRequest size={16} />,
+        title: repo,
+        description: `${verb} PR${num ? ` #${num}` : ""}${title ? `: ${title}` : ""}`,
+        tag: num ? `#${num}` : undefined,
+        color: "#7c5cff",
+      };
+    }
     case "WatchEvent":
-      return `Starred ${event.repo.name}`;
+      return {
+        icon: <Star size={16} />,
+        title: repo,
+        description: `Starred ${repo}`,
+        tag: "starred",
+        color: "#f59e0b",
+      };
     case "ForkEvent":
-      return `Forked ${event.repo.name}`;
-    case "PullRequestEvent":
-      return `${event.payload.action ?? "Updated"} a pull request in ${event.repo.name}`;
-    case "IssuesEvent":
-      return `${event.payload.action ?? "Updated"} an issue in ${event.repo.name}`;
+      return {
+        icon: <GitFork size={16} />,
+        title: repo,
+        description: `Forked ${repo}`,
+        tag: "forked",
+        color: "#f472b6",
+      };
+    case "CreateEvent": {
+      const refType = event.payload.ref_type ?? "repository";
+      return {
+        icon: <GitBranch size={16} />,
+        title: repo,
+        description: `Created ${refType}${event.payload.ref ? ` "${event.payload.ref}"` : ""} in ${repo}`,
+        tag: event.payload.ref ?? refType,
+        color: "#38bdf8",
+      };
+    }
+    case "IssuesEvent": {
+      const num = event.payload.issue?.number;
+      const title = event.payload.issue?.title;
+      return {
+        icon: <CircleDot size={16} />,
+        title: repo,
+        description: `${event.payload.action ?? "Updated"} issue${num ? ` #${num}` : ""}${title ? `: ${title}` : ""}`,
+        tag: num ? `#${num}` : undefined,
+        color: "#a3e635",
+      };
+    }
     default:
-      return `Activity in ${event.repo.name}`;
+      return {
+        icon: <Activity size={16} />,
+        title: repo,
+        description: `Activity in ${repo}`,
+        color: "#9ca3af",
+      };
   }
 }
 
@@ -51,6 +140,7 @@ const MONTHS = [
 export default function GitHubStats() {
   const [days, setDays] = useState<Day[] | null>(null);
   const [events, setEvents] = useState<GhEvent[]>([]);
+  const [profile, setProfile] = useState<GhProfile | null>(null);
   const [status, setStatus] = useState<"loading" | "ready" | "error">(
     "loading",
   );
@@ -60,12 +150,15 @@ export default function GitHubStats() {
 
     async function load() {
       try {
-        const [calRes, eventsRes] = await Promise.all([
+        const [calRes, eventsRes, profileRes] = await Promise.all([
           fetch(
             `https://github-contributions-api.jogruber.de/v4/${USERNAME}?y=last`,
             { signal: controller.signal },
           ),
           fetch(`https://api.github.com/users/${USERNAME}/events/public`, {
+            signal: controller.signal,
+          }),
+          fetch(`https://api.github.com/users/${USERNAME}`, {
             signal: controller.signal,
           }),
         ]);
@@ -77,6 +170,11 @@ export default function GitHubStats() {
         if (eventsRes.ok) {
           const eventData: GhEvent[] = await eventsRes.json();
           setEvents(eventData.slice(0, 5));
+        }
+
+        if (profileRes.ok) {
+          const profileData: GhProfile = await profileRes.json();
+          setProfile(profileData);
         }
 
         setStatus("ready");
@@ -126,11 +224,23 @@ export default function GitHubStats() {
     return `rgb(var(--accent) / ${alpha})`;
   };
 
+  const statCardStyle = {
+    borderColor: "rgb(var(--line))",
+    background: "rgb(var(--bg-soft))",
+  };
+
   return (
     <section id="github" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-3 text-4xl font-semibold sm:text-5xl">
-          GitHub contributions
+          <FoldText
+            text="GitHub contributions"
+            splitBy="word"
+            trigger="scroll"
+            fontSize="inherit"
+            fontWeight="inherit"
+            color="inherit"
+          />
         </h2>
         <p className="mb-14 max-w-lg text-[rgb(var(--ink-dim))]">
           A year of commits, reviews, and late-night pushes.
@@ -240,26 +350,100 @@ export default function GitHubStats() {
         </div>
 
         {events.length > 0 && (
-          <div
-            className="mt-6 rounded-2xl border p-6"
-            style={{ borderColor: "rgb(var(--line))" }}
-          >
-            <p className="mb-4 font-mono text-xs uppercase tracking-widest text-[rgb(var(--ink-dim))]">
-              Recent activity
-            </p>
-            <ul className="space-y-4">
-              {events.map((event) => (
-                <li
-                  key={event.id}
-                  className="flex items-center justify-between gap-4 text-sm"
-                >
-                  <span>{describeEvent(event)}</span>
-                  <span className="shrink-0 font-mono text-xs text-[rgb(var(--ink-dim))]">
-                    {timeAgo(event.created_at)}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_260px]">
+            <div
+              className="rounded-2xl border p-6"
+              style={{ borderColor: "rgb(var(--line))" }}
+            >
+              <div className="mb-5 flex items-center gap-2">
+                <Activity size={16} style={{ color: "rgb(var(--ink-dim))" }} />
+                <p className="font-semibold">Recent Activity</p>
+              </div>
+
+              <div className="relative">
+                {events.map((event, i) => {
+                  const v = eventVisual(event);
+                  const isLast = i === events.length - 1;
+                  return (
+                    <div key={event.id} className="relative flex gap-3">
+                      <div className="flex flex-col items-center">
+                        <span
+                          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
+                          style={{ background: `${v.color}22`, color: v.color }}
+                        >
+                          {v.icon}
+                        </span>
+                        {!isLast && (
+                          <span
+                            className="w-px flex-1"
+                            style={{ background: "rgb(var(--line-soft))" }}
+                          />
+                        )}
+                      </div>
+                      <div className={`min-w-0 flex-1 ${isLast ? "pb-0" : "pb-5"}`}>
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-0.5">
+                          <p className="truncate text-sm font-semibold">{v.title}</p>
+                          <span className="shrink-0 font-mono text-[11px] text-[rgb(var(--ink-dim))]">
+                            {timeAgo(event.created_at)}
+                          </span>
+                        </div>
+                        <p className="mt-0.5 text-sm text-[rgb(var(--ink-dim))]">
+                          {v.description}
+                        </p>
+                        {v.tag && (
+                          <span
+                            className="mt-2 inline-block rounded-md px-2 py-0.5 font-mono text-[10px]"
+                            style={{
+                              background: "rgb(var(--bg-soft))",
+                              color: "rgb(var(--ink-dim))",
+                            }}
+                          >
+                            {v.tag}
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center gap-2">
+                <Star size={16} style={{ color: "rgb(var(--ink-dim))" }} />
+                <p className="font-semibold">Overview</p>
+              </div>
+
+              <div className="rounded-2xl border p-5" style={statCardStyle}>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+                  Public repos
+                </p>
+                <p className="mt-2 text-3xl font-semibold">
+                  {profile ? profile.public_repos : "—"}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border p-5" style={statCardStyle}>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+                  Followers
+                </p>
+                <p className="mt-2 text-3xl font-semibold">
+                  {profile ? profile.followers : "—"}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border p-5" style={statCardStyle}>
+                <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+                  Contributions
+                </p>
+                <p className="mt-2 text-3xl font-semibold">
+                  {status === "ready" ? total.toLocaleString() : "—"}
+                </p>
+                <p className="mt-1 text-xs text-[rgb(var(--ink-dim))]">
+                  in the last year
+                </p>
+              </div>
+            </div>
           </div>
         )}
       </div>

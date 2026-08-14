@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { LayoutGrid, List } from "lucide-react";
 import { projects, type Project } from "../data/content";
 import Folder from "./Folder";
+import FoldText from "./FoldText";
 import ProjectModal from "./ProjectModal";
 
 const FILTERS = ["All Projects", "Researcher", "Designer", "Team"];
@@ -21,7 +22,16 @@ export default function Projects() {
   return (
     <section id="projects" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-2 text-4xl font-semibold sm:text-5xl">Projects</h2>
+        <h2 className="mb-2 text-4xl font-semibold sm:text-5xl">
+          <FoldText
+            text="Projects"
+            splitBy="word"
+            trigger="scroll"
+            fontSize="inherit"
+            fontWeight="inherit"
+            color="inherit"
+          />
+        </h2>
         <p className="mb-10 max-w-lg text-[rgb(var(--ink-dim))]">
           Click a project to open it. Write-ups are in progress — swap in
           your own case studies anytime.

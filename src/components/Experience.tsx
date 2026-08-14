@@ -1,5 +1,6 @@
 import { experience } from "../data/content";
 import EducationTimeline from "./EducationTimeline";
+import FoldText from "./FoldText";
 import InfoList from "./InfoList";
 
 export default function Experience() {
@@ -7,7 +8,14 @@ export default function Experience() {
     <section id="experience" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-4xl">
         <h2 className="mb-14 text-4xl font-semibold sm:text-5xl">
-          Where I've been.
+          <FoldText
+            text="Where I've been."
+            splitBy="word"
+            trigger="scroll"
+            fontSize="inherit"
+            fontWeight="inherit"
+            color="inherit"
+          />
         </h2>
 
         <div className="mb-16">

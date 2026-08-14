@@ -10,6 +10,7 @@ import {
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { FaJava } from "react-icons/fa6";
+import FoldText from "./FoldText";
 
 const TILES: {
   name: string;
@@ -88,7 +89,14 @@ export default function Skills() {
     <section id="skills" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-6xl">
         <h2 className="mb-3 text-4xl font-semibold sm:text-5xl">
-          Tools & skills
+          <FoldText
+            text="Tools & skills"
+            splitBy="word"
+            trigger="scroll"
+            fontSize="inherit"
+            fontWeight="inherit"
+            color="inherit"
+          />
         </h2>
         <p className="mb-14 max-w-lg text-[rgb(var(--ink-dim))]">
           What I reach for to take a project from sketch to ship. Hover or

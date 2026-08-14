@@ -1,5 +1,6 @@
 import { ArrowRight, FileText, Mail, Send } from "lucide-react";
 import { contact, links, profile } from "../data/content";
+import FoldText from "./FoldText";
 import { GithubIcon, LinkedinIcon } from "./icons";
 import Lightfall from "./Lightfall";
 
@@ -36,8 +37,14 @@ export default function Contact() {
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <h2 className="text-balance text-4xl font-semibold sm:text-6xl">
-          Let's build something
-          <br /> worth designing.
+          <FoldText
+            text={"Let's build something\nworth designing."}
+            splitBy="word"
+            trigger="scroll"
+            fontSize="inherit"
+            fontWeight="inherit"
+            color="inherit"
+          />
         </h2>
         <p className="mt-6 max-w-md text-[rgb(var(--ink-dim))]">
           Open to internships, collaborations and UX/UI work. Reach out — I
