@@ -59,7 +59,7 @@ function SkillTile({
       onMouseEnter={() => setShow(true)}
       onMouseLeave={() => setShow(false)}
       onClick={() => setShow((s) => !s)}
-      className="group relative flex aspect-square items-center justify-center rounded-2xl border transition-transform hover:-translate-y-1"
+      className="cursor-target group relative flex aspect-square items-center justify-center rounded-2xl border transition-transform hover:-translate-y-1"
       style={{
         borderColor: "rgb(var(--line-soft))",
         background: "rgb(var(--bg-soft))",

@@ -27,7 +27,7 @@ export default function MusicPlayer() {
       <button
         onClick={() => setOpen((o) => !o)}
         aria-label={open ? "Hide music player" : "Show music player"}
-        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border shadow-lg backdrop-blur-xl transition-transform hover:scale-105 active:scale-95"
+        className="cursor-target flex h-12 w-12 shrink-0 items-center justify-center rounded-full border shadow-lg backdrop-blur-xl transition-transform hover:scale-105 active:scale-95"
         style={{
           borderColor: "rgb(var(--line))",
           background: "rgb(var(--bg-elevated) / 0.9)",

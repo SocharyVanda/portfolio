@@ -74,7 +74,7 @@ export default function Projects() {
                 <button
                   key={f}
                   onClick={() => setFilter(f)}
-                  className={`shrink-0 rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
+                  className={`cursor-target shrink-0 rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
                     filter === f
                       ? "bg-[#3d7eff] text-white"
                       : "text-[rgb(var(--ink-dim))] hover:bg-[rgb(var(--bg-soft))]"
@@ -97,6 +97,7 @@ export default function Projects() {
                       <Folder
                         color={project.color}
                         size={1.2}
+                        className="cursor-target"
                         onOpen={() => setActive(project)}
                       />
                     </div>

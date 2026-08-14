@@ -79,6 +79,11 @@ export const education: EducationItem[] = [
 
 export const achievements = [
   {
+    title: "Champion, MIS Challenge (UX/UI Challenge)",
+    place: "",
+    date: "2026",
+  },
+  {
     title: "First Runner-Up, MIS Challenge (UX/UI Challenge)",
     place: "",
     date: "June 2025",

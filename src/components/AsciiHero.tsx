@@ -30,7 +30,7 @@ export default function AsciiHero() {
 
         <a
           href="#projects"
-          className="mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform hover:-translate-y-0.5"
+          className="cursor-target mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform hover:-translate-y-0.5"
           style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
         >
           View my work

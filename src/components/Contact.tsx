@@ -30,7 +30,7 @@ export default function Contact() {
 
         <a
           href={`mailto:${contact.emails[0]}`}
-          className="mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
+          className="cursor-target mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
           style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
         >
           Get in touch
@@ -38,11 +38,11 @@ export default function Contact() {
         </a>
 
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3 font-mono text-xs text-[rgb(var(--ink-dim))]">
-          <a href={`mailto:${contact.emails[0]}`} className="hover:text-[rgb(var(--ink))]">
+          <a href={`mailto:${contact.emails[0]}`} className="cursor-target hover:text-[rgb(var(--ink))]">
             {contact.emails[0]}
           </a>
           <span>·</span>
-          <a href={`tel:${contact.tel}`} className="hover:text-[rgb(var(--ink))]">
+          <a href={`tel:${contact.tel}`} className="cursor-target hover:text-[rgb(var(--ink))]">
             {contact.tel}
           </a>
           {links.cv && (
@@ -50,7 +50,7 @@ export default function Contact() {
               <span>·</span>
               <a
                 href={links.cv}
-                className="inline-flex items-center gap-1 hover:text-[rgb(var(--ink))]"
+                className="cursor-target inline-flex items-center gap-1 hover:text-[rgb(var(--ink))]"
               >
                 <FileText size={12} />
                 Resume
@@ -67,7 +67,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
               aria-label={label}
-              className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
+              className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
               style={{ borderColor: "rgb(var(--line))" }}
             >
               <Icon size={17} />
@@ -76,7 +76,7 @@ export default function Contact() {
           <a
             href={`mailto:${contact.emails[0]}`}
             aria-label="Email"
-            className="flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
+            className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
             style={{ borderColor: "rgb(var(--line))" }}
           >
             <Mail size={17} />

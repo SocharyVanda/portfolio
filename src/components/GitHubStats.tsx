@@ -255,7 +255,7 @@ export default function GitHubStats() {
               href={links.github}
               target="_blank"
               rel="noreferrer"
-              className="flex items-center gap-2 text-sm font-medium hover:text-[rgb(var(--accent))]"
+              className="cursor-target flex items-center gap-2 text-sm font-medium hover:text-[rgb(var(--accent))]"
             >
               <GithubIcon size={18} />@{USERNAME}
             </a>
@@ -263,7 +263,7 @@ export default function GitHubStats() {
               href={links.github}
               target="_blank"
               rel="noreferrer"
-              className="text-sm text-[rgb(var(--ink-dim))] hover:text-[rgb(var(--ink))]"
+              className="cursor-target text-sm text-[rgb(var(--ink-dim))] hover:text-[rgb(var(--ink))]"
             >
               View profile ↗
             </a>

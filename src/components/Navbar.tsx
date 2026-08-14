@@ -41,7 +41,7 @@ export default function Navbar() {
       >
         <a
           href="#top"
-          className="flex shrink-0 items-center gap-2 pl-1 text-sm font-medium"
+          className="cursor-target flex shrink-0 items-center gap-2 pl-1 text-sm font-medium"
         >
           <span className="relative flex h-2 w-2">
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[rgb(var(--accent))] opacity-60" />
@@ -60,14 +60,14 @@ export default function Navbar() {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="hidden h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] sm:flex"
+            className="cursor-target hidden h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] sm:flex"
           >
             <GithubIcon size={16} />
           </a>
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] lg:hidden"
+            className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))] lg:hidden"
           >
             {open ? <X size={16} /> : <Menu size={16} />}
           </button>
@@ -87,7 +87,7 @@ export default function Navbar() {
               key={item.href}
               href={item.href}
               onClick={() => setOpen(false)}
-              className="rounded-xl px-4 py-2.5 text-sm text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
+              className="cursor-target rounded-xl px-4 py-2.5 text-sm text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
             >
               {item.label}
             </a>

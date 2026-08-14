@@ -77,7 +77,7 @@ export default function ProjectModal({
                 </span>
                 <button
                   onClick={onClose}
-                  className="ml-auto rounded-md p-1 text-neutral-500 hover:bg-black/10 hover:text-black"
+                  className="cursor-target ml-auto rounded-md p-1 text-neutral-500 hover:bg-black/10 hover:text-black"
                   aria-label="Close"
                 >
                   <X size={14} />
@@ -151,7 +151,7 @@ export default function ProjectModal({
                     href={project.link.href}
                     target="_blank"
                     rel="noreferrer"
-                    className="mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline"
+                    className="cursor-target mt-6 inline-flex items-center gap-1.5 text-sm font-medium text-blue-600 hover:underline"
                   >
                     {project.link.label}
                     <ArrowUpRight size={14} />
