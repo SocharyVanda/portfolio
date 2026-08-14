@@ -1,6 +1,7 @@
 import { ArrowRight, FileText, Mail, Send } from "lucide-react";
 import { contact, links, profile } from "../data/content";
 import { GithubIcon, LinkedinIcon } from "./icons";
+import Lightfall from "./Lightfall";
 
 export default function Contact() {
   const socials = [
@@ -10,8 +11,30 @@ export default function Contact() {
   ].filter(Boolean) as { href: string; icon: typeof GithubIcon; label: string }[];
 
   return (
-    <section id="contact" className="px-6 py-24 sm:px-12 sm:py-32">
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+    <section id="contact" className="relative overflow-hidden px-6 py-24 sm:px-12 sm:py-32">
+      <div className="pointer-events-none absolute inset-0">
+        <Lightfall
+          colors={["#7c5cff", "#9ee069", "#a6c8ff"]}
+          backgroundColor="#0a0a14"
+          speed={0.6}
+          streakCount={5}
+          density={0.5}
+          twinkle={0.8}
+          zoom={3}
+          backgroundGlow={0.3}
+          opacity={0.65}
+          mouseInteraction={false}
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 45%, rgb(var(--bg) / 0.72) 0%, rgb(var(--bg) / 0.15) 65%, transparent 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <h2 className="text-balance text-4xl font-semibold sm:text-6xl">
           Let's build something
           <br /> worth designing.
