@@ -28,6 +28,20 @@ export function LinkedinIcon({ size = 18, className }: IconProps) {
   );
 }
 
+export function FigmaIcon({ size = 18, className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      className={className}
+      fill="currentColor"
+    >
+      <path d="M8 24a4 4 0 0 0 4-4v-4H8a4 4 0 0 0 0 8ZM4 12a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4ZM4 4a4 4 0 0 1 4-4h4v8H8a4 4 0 0 1-4-4ZM12 0h4a4 4 0 0 1 0 8h-4V0ZM20 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" />
+    </svg>
+  );
+}
+
 export function BehanceIcon({ size = 18, className }: IconProps) {
   return (
     <svg
