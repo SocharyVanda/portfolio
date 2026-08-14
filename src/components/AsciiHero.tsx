@@ -7,9 +7,21 @@ export default function AsciiHero() {
   return (
     <section
       id="top"
-      className="px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
+      className="relative px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
     >
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+      <div className="pointer-events-none absolute right-4 top-0 hidden h-[620px] w-[300px] sm:right-10 sm:block sm:w-[360px] lg:right-16">
+        <div className="pointer-events-auto h-full w-full">
+          <Lanyard
+            position={[0, 0, 20]}
+            gravity={[0, -40, 0]}
+            frontImage="/photos/lanyard.jpg"
+            backImage="/photos/lanyard.jpg"
+            imageFit="cover"
+          />
+        </div>
+      </div>
+
+      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <p className="mb-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]" style={{ borderColor: "rgb(var(--line))" }}>
           <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent))]" />
           CS Student · UX/UI Designer
@@ -39,17 +51,7 @@ export default function AsciiHero() {
         </a>
       </div>
 
-      <div className="mx-auto -mt-8 h-[420px] w-full max-w-xs sm:h-[520px] sm:max-w-sm">
-        <Lanyard
-          position={[0, 0, 20]}
-          gravity={[0, -40, 0]}
-          frontImage="/photos/lanyard.jpg"
-          backImage="/photos/lanyard.jpg"
-          imageFit="cover"
-        />
-      </div>
-
-      <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+      <div className="relative mx-auto mt-16 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
         <span>Phnom Penh, Cambodia</span>
         <span>[ scroll to explore ]</span>
       </div>
