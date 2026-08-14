@@ -117,6 +117,7 @@ export type Project = {
   title: string;
   tags: string[];
   image: string;
+  cover?: string;
   color: string;
   projectType?: string;
   client?: string;
@@ -136,6 +137,7 @@ export const projects: Project[] = [
     title: "Skincare Website",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/skincare.jpg",
+    cover: "/projects/covers/skincare-cover.jpg",
     color: "#3f7d58",
     projectType: "E-commerce website — MIS Challenge",
     credits: "Team 8",
@@ -151,6 +153,7 @@ export const projects: Project[] = [
     title: "Tesla Clone",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/tesla.jpg",
+    cover: "/projects/covers/tesla-cover.jpg",
     color: "#b91c1c",
     projectType: "Website clone",
     writing:
@@ -160,6 +163,7 @@ export const projects: Project[] = [
     title: "BrewFinder",
     tags: [],
     image: "/projects/brewfinder.jpg",
+    cover: "/projects/covers/brewfinder-cover.jpg",
     color: "#7f1d1d",
     projectType: "Mobile app wireframe",
     credits: "KjeAddict",
@@ -175,6 +179,7 @@ export const projects: Project[] = [
     title: "Wedpod",
     tags: [],
     image: "/projects/wedpod.jpg",
+    cover: "/projects/covers/wedpod-cover.jpg",
     color: "#92400e",
     projectType: "Wedding planning website",
     writing:
@@ -184,6 +189,7 @@ export const projects: Project[] = [
     title: "BookLan",
     tags: [],
     image: "/projects/booklan.jpg",
+    cover: "/projects/covers/booklan-cover.jpg",
     color: "#1e3a8a",
     projectType: "Mobile app",
     writing:
