@@ -107,8 +107,7 @@ export default function Contact() {
         </div>
 
         <p className="mt-20 font-mono text-xs text-[rgb(var(--ink-dim))]">
-          © {new Date().getFullYear()} {profile.name}. Built with React &
-          Tailwind.
+          © {new Date().getFullYear()} {profile.name}.
         </p>
       </div>
     </section>
