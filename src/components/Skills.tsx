@@ -76,7 +76,7 @@ function SkillTile({
         className={`pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[10px] transition-opacity ${
           show ? "opacity-100" : "opacity-0"
         }`}
-        style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
+        style={{ background: "rgb(var(--button-bg))", color: "rgb(var(--button-ink))" }}
       >
         {name}
       </span>

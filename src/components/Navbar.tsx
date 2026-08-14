@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { profile, links } from "../data/content";
-import Dither from "./Dither";
 import { GithubIcon } from "./icons";
 import GooeyNav from "./GooeyNav";
 import type { Theme } from "../hooks/useTheme";
@@ -36,31 +35,19 @@ export default function Navbar({
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
-        className={`relative flex w-full max-w-4xl items-center justify-between gap-4 overflow-hidden rounded-full border px-4 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-shadow ${
+        className={`relative flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border px-4 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-shadow ${
           scrolled ? "shadow-lg shadow-black/20" : ""
         }`}
         style={{
           borderColor: "rgb(255 255 255 / 0.15)",
-          background: "rgb(8 9 12 / 0.55)",
+          background: "rgb(255 255 255 / 0.06)",
           boxShadow: scrolled
             ? undefined
-            : "inset 0 1px 0 rgb(255 255 255 / 0.08)",
+            : "inset 0 1px 0 rgb(255 255 255 / 0.1)",
         }}
       >
-        {/* This pill always sits on the Dither canvas below, so its own
-            content is fixed light regardless of the site theme. */}
-        <div className="pointer-events-none absolute inset-0">
-          <Dither
-            waveColor={[0.24, 0.2, 0.42]}
-            colorNum={4}
-            pixelSize={2}
-            waveAmplitude={0.25}
-            waveFrequency={4}
-            waveSpeed={0.04}
-            enableMouseInteraction={false}
-          />
-        </div>
-
+        {/* This pill is always glass over the fixed dark page canvas, so
+            its own content is fixed light regardless of the site theme. */}
         <a
           href="#top"
           className="cursor-target flex shrink-0 items-center gap-2 pl-1 text-sm font-medium text-white"

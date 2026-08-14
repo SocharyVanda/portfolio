@@ -33,7 +33,7 @@ export default function AsciiHero() {
           blurAmount={5}
           animationDuration={0.45}
           pauseBetweenAnimations={0.35}
-          className="font-display text-4xl font-semibold leading-[1.08] tracking-tight sm:text-6xl"
+          className="font-display text-6xl font-semibold leading-[1.05] tracking-tight sm:text-8xl"
         />
 
         <p className="mt-5 max-w-lg text-sm leading-relaxed text-[rgb(var(--ink-dim))] sm:text-base">
@@ -44,7 +44,7 @@ export default function AsciiHero() {
         <a
           href="#projects"
           className="cursor-target mt-8 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-transform hover:-translate-y-0.5"
-          style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
+          style={{ background: "rgb(var(--button-bg))", color: "rgb(var(--button-ink))" }}
         >
           View my work
           <ArrowDownRight size={16} />
