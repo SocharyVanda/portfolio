@@ -1,6 +1,5 @@
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "../data/content";
-import Dither from "./Dither";
 import Lanyard from "./Lanyard";
 import TrueFocus from "./TrueFocus";
 
@@ -8,20 +7,8 @@ export default function AsciiHero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
+      className="relative px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
     >
-      <div className="pointer-events-none absolute inset-0">
-        <Dither
-          waveColor={[0.24, 0.2, 0.42]}
-          colorNum={4}
-          pixelSize={2}
-          waveAmplitude={0.28}
-          waveFrequency={3.5}
-          waveSpeed={0.05}
-          enableMouseInteraction={false}
-        />
-      </div>
-
       <div className="pointer-events-none absolute right-4 top-0 hidden h-[620px] w-[300px] sm:right-10 sm:block sm:w-[360px] lg:right-16">
         <div className="pointer-events-auto h-full w-full">
           <Lanyard
