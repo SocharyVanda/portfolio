@@ -1,29 +1,12 @@
 import { achievements } from "../data/content";
 import Cubes from "./Cubes";
-import CursorGrid from "./CursorGrid";
 import FoldText from "./FoldText";
 import InfoList from "./InfoList";
 
 export default function Achievements() {
   return (
-    <section id="awards" className="relative overflow-hidden px-6 py-24 sm:px-12 sm:py-32">
-      <div className="absolute inset-0">
-        <CursorGrid
-          cellSize={64}
-          color="#7c5cff"
-          radius={160}
-          falloff="smooth"
-          holdTime={350}
-          fadeDuration={700}
-          lineWidth={1}
-          maxOpacity={0.5}
-          fillOpacity={0.05}
-          gridOpacity={0.04}
-          clickPulse={false}
-        />
-      </div>
-
-      <div className="relative mx-auto grid max-w-5xl items-center gap-12 sm:grid-cols-2 sm:gap-16">
+    <section id="awards" className="px-6 py-24 sm:px-12 sm:py-32">
+      <div className="mx-auto grid max-w-5xl items-center gap-12 sm:grid-cols-2 sm:gap-16">
         <div>
           <p
             className="mb-3 font-mono text-xs uppercase tracking-widest"
