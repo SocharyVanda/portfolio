@@ -1,4 +1,5 @@
-import { education, experience } from "../data/content";
+import { experience } from "../data/content";
+import EducationTimeline from "./EducationTimeline";
 import InfoList from "./InfoList";
 
 export default function Experience() {
@@ -20,7 +21,7 @@ export default function Experience() {
           <h3 className="mb-4 font-mono text-sm uppercase tracking-widest text-[rgb(var(--ink-dim))]">
             Education
           </h3>
-          <InfoList items={education} />
+          <EducationTimeline />
         </div>
       </div>
     </section>

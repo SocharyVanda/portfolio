@@ -41,8 +41,8 @@ export const education = [
     note: "Current",
   },
   {
-    title: "Above & Beyond School",
-    place: "Front-end Program",
+    title: "Front-end Program",
+    place: "Above & Beyond School",
     date: "September — December 2025",
   },
   {
