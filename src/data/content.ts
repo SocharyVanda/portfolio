@@ -89,7 +89,6 @@ export const experience = [
 ];
 
 export type Project = {
-  icon: string;
   title: string;
   tags: string[];
   image: string;
@@ -109,7 +108,6 @@ export type Project = {
 // fill them in per project whenever you have them.
 export const projects: Project[] = [
   {
-    icon: "🧴",
     title: "Skincare Website",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/skincare.jpg",
@@ -125,7 +123,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    icon: "🚗",
     title: "Tesla Clone",
     tags: ["Researcher", "Designer", "Team"],
     image: "/projects/tesla.jpg",
@@ -135,7 +132,6 @@ export const projects: Project[] = [
       "Write about rebuilding the Tesla site here — what you focused on cloning (layout, motion, responsiveness), and what you learned from studying the original.",
   },
   {
-    icon: "☕",
     title: "BrewFinder",
     tags: [],
     image: "/projects/brewfinder.jpg",
@@ -151,7 +147,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    icon: "💍",
     title: "Wedpod",
     tags: [],
     image: "/projects/wedpod.jpg",
@@ -161,7 +156,6 @@ export const projects: Project[] = [
       "WedPod is a wedding planner that enables the groom and bride to plan their wedding venue.",
   },
   {
-    icon: "🚌",
     title: "BookLan",
     tags: [],
     image: "/projects/booklan.jpg",

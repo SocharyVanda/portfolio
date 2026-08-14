@@ -87,7 +87,7 @@ export default function ProjectModal({
               {/* content */}
               <div className="scroll-thin max-h-[70vh] overflow-y-auto bg-white px-6 py-8 text-neutral-900 sm:px-10 sm:py-10">
                 <h3 className="text-3xl font-semibold sm:text-4xl">
-                  {project.icon} {project.title}
+                  {project.title}
                 </h3>
 
                 {project.tags.length > 0 && (

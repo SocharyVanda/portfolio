@@ -90,8 +90,7 @@ export default function Projects() {
                         onOpen={() => setActive(project)}
                       />
                     </div>
-                    <span className="flex items-center gap-1.5 text-sm font-medium">
-                      <span aria-hidden>{project.icon}</span>
+                    <span className="text-sm font-medium">
                       {project.title}
                     </span>
                   </div>
