@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Users } from "lucide-react";
-import SkillTile from "./SkillTile";
+import LogoLoop, { type LogoItem } from "./LogoLoop";
 
 const TILES: {
   name: string;
@@ -26,6 +26,33 @@ const TILES: {
   },
 ];
 
+const logos: LogoItem[] = TILES.map((tile) => ({
+  title: tile.name,
+  ariaLabel: tile.name,
+  node: (
+    <div
+      className="group relative flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border sm:h-20 sm:w-20"
+      style={{
+        borderColor: "rgb(var(--line))",
+        background: "rgb(var(--bg-soft))",
+      }}
+    >
+      <span
+        className="flex h-9 w-9 items-center justify-center rounded-lg text-xs font-bold sm:h-11 sm:w-11 sm:text-sm"
+        style={{ background: tile.bg, color: tile.fg }}
+      >
+        {tile.content}
+      </span>
+      <span
+        className="pointer-events-none absolute -top-9 left-1/2 z-10 -translate-x-1/2 whitespace-nowrap rounded-full px-2.5 py-1 font-mono text-[10px] opacity-0 transition-opacity group-hover:opacity-100"
+        style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
+      >
+        {tile.name}
+      </span>
+    </div>
+  ),
+}));
+
 export default function Skills() {
   return (
     <section id="skills" className="px-6 py-24 sm:px-12 sm:py-32">
@@ -34,17 +61,21 @@ export default function Skills() {
           Tools & skills
         </h2>
         <p className="mb-14 max-w-lg text-[rgb(var(--ink-dim))]">
-          What I reach for to take a project from sketch to ship. Hover or
-          tap any icon to see its name.
+          What I reach for to take a project from sketch to ship. Hover any
+          icon to see its name.
         </p>
 
-        <div className="grid grid-cols-4 gap-3 sm:grid-cols-6 sm:gap-4 lg:grid-cols-8">
-          {TILES.map((tile) => (
-            <SkillTile key={tile.name} name={tile.name} bg={tile.bg} fg={tile.fg}>
-              {tile.content}
-            </SkillTile>
-          ))}
-        </div>
+        <LogoLoop
+          logos={logos}
+          speed={60}
+          direction="left"
+          logoHeight={64}
+          gap={28}
+          hoverSpeed={0}
+          fadeOut
+          fadeOutColor="rgb(var(--bg))"
+          ariaLabel="Tools and skills"
+        />
       </div>
     </section>
   );
