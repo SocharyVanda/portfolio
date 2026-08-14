@@ -33,11 +33,25 @@ export const skills = {
   programming: ["JavaScript", "Java", "CSS", "HTML", "Python"],
 };
 
-export const education = [
+type EducationItem = {
+  title: string;
+  place: string;
+  date: string;
+  note?: string;
+  highlight?: string;
+};
+
+export const education: EducationItem[] = [
   {
     title: "Bachelor of Computer Science",
     place: "Paragon International University",
     date: "2024 — 2028",
+    note: "Current",
+  },
+  {
+    title: "French Language Program",
+    place: "Institut Français du Cambodge (IFC)",
+    date: "2025 — Present",
     note: "Current",
   },
   {
@@ -54,6 +68,12 @@ export const education = [
     title: "English Education",
     place: "Sovannaphumi School",
     date: "2020 — 2023",
+  },
+  {
+    title: "English Education",
+    place: "ACE School",
+    date: "2020 — 2021",
+    highlight: "IELTS 7.5",
   },
 ];
 

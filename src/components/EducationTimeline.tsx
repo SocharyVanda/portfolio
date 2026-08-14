@@ -1,4 +1,11 @@
-import { Code2, GraduationCap, Languages, School } from "lucide-react";
+import {
+  Award,
+  Code2,
+  Globe,
+  GraduationCap,
+  Languages,
+  School,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { education } from "../data/content";
 
@@ -7,6 +14,11 @@ const ICONS: { match: (place: string) => boolean; icon: ReactNode; color: string
     match: (place) => place.includes("Paragon"),
     icon: <GraduationCap size={20} />,
     color: "#7c5cff",
+  },
+  {
+    match: (place) => place.includes("IFC") || place.includes("Institut"),
+    icon: <Globe size={20} />,
+    color: "#38bdf8",
   },
   {
     match: (place) => place.includes("Beyond"),
@@ -22,6 +34,11 @@ const ICONS: { match: (place: string) => boolean; icon: ReactNode; color: string
     match: (place) => place.includes("Sovannaphumi"),
     icon: <Languages size={20} />,
     color: "#f472b6",
+  },
+  {
+    match: (place) => place.includes("ACE"),
+    icon: <Award size={20} />,
+    color: "#a3e635",
   },
 ];
 
@@ -67,7 +84,20 @@ export default function EducationTimeline() {
                 }}
               >
                 <div className="flex flex-wrap items-start justify-between gap-x-4 gap-y-1">
-                  <p className="font-semibold">{item.place}</p>
+                  <div>
+                    <p className="font-semibold">{item.place}</p>
+                    {item.highlight && (
+                      <span
+                        className="mt-1 inline-block rounded-full px-2 py-0.5 font-mono text-[10px] uppercase tracking-wide"
+                        style={{
+                          color: "rgb(var(--ink-dim))",
+                          background: "rgb(var(--bg-soft))",
+                        }}
+                      >
+                        {item.highlight}
+                      </span>
+                    )}
+                  </div>
                   <span
                     className="shrink-0 font-mono text-xs"
                     style={{ color: "rgb(var(--ink-dim))" }}
