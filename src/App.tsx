@@ -10,8 +10,11 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import TargetCursor from "./components/TargetCursor";
+import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
+  const { theme, toggle } = useTheme();
+
   return (
     <div className="min-h-screen">
       <TargetCursor
@@ -36,7 +39,7 @@ export default function App() {
           clickPulse={false}
         />
       </div>
-      <Navbar />
+      <Navbar theme={theme} onToggleTheme={toggle} />
       <main>
         <AsciiHero />
         <About />

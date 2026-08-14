@@ -28,11 +28,13 @@ export default function Contact() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(60% 55% at 50% 45%, rgb(var(--bg) / 0.6) 0%, rgb(var(--bg) / 0.1) 65%, transparent 100%)",
+            "radial-gradient(60% 55% at 50% 45%, rgb(8 9 12 / 0.6) 0%, rgb(8 9 12 / 0.1) 65%, transparent 100%)",
         }}
       />
 
-      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
+      {/* This section always sits on the Dither canvas above, so its own
+          content is fixed light/dark regardless of the site theme. */}
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center text-white">
         <h2 className="text-balance text-4xl font-semibold sm:text-6xl">
           <FoldText
             text={"Let's build something\nworth designing."}
@@ -43,26 +45,25 @@ export default function Contact() {
             color="inherit"
           />
         </h2>
-        <p className="mt-6 max-w-md text-[rgb(var(--ink-dim))]">
+        <p className="mt-6 max-w-md text-white/60">
           Open to internships, collaborations and UX/UI work. Reach out — I
           usually reply within a day.
         </p>
 
         <a
           href={`mailto:${contact.emails[0]}`}
-          className="cursor-target mt-10 inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-transform hover:-translate-y-0.5"
-          style={{ background: "rgb(var(--ink))", color: "rgb(var(--bg))" }}
+          className="cursor-target mt-10 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-medium text-black transition-transform hover:-translate-y-0.5"
         >
           Get in touch
           <ArrowRight size={16} />
         </a>
 
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 font-mono text-xs text-[rgb(var(--ink-dim))]">
-          <a href={`mailto:${contact.emails[0]}`} className="cursor-target hover:text-[rgb(var(--ink))]">
+        <div className="mt-6 flex flex-wrap items-center justify-center gap-3 font-mono text-xs text-white/60">
+          <a href={`mailto:${contact.emails[0]}`} className="cursor-target hover:text-white">
             {contact.emails[0]}
           </a>
           <span>·</span>
-          <a href={`tel:${contact.tel}`} className="cursor-target hover:text-[rgb(var(--ink))]">
+          <a href={`tel:${contact.tel}`} className="cursor-target hover:text-white">
             {contact.tel}
           </a>
           {links.cv && (
@@ -70,7 +71,7 @@ export default function Contact() {
               <span>·</span>
               <a
                 href={links.cv}
-                className="cursor-target inline-flex items-center gap-1 hover:text-[rgb(var(--ink))]"
+                className="cursor-target inline-flex items-center gap-1 hover:text-white"
               >
                 <FileText size={12} />
                 Resume
@@ -87,8 +88,7 @@ export default function Contact() {
               target="_blank"
               rel="noreferrer"
               aria-label={label}
-              className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
-              style={{ borderColor: "rgb(var(--line))" }}
+              className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
             >
               <Icon size={17} />
             </a>
@@ -96,14 +96,13 @@ export default function Contact() {
           <a
             href={`mailto:${contact.emails[0]}`}
             aria-label="Email"
-            className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border transition-colors hover:bg-[rgb(var(--bg-soft))]"
-            style={{ borderColor: "rgb(var(--line))" }}
+            className="cursor-target flex h-11 w-11 items-center justify-center rounded-full border border-white/20 transition-colors hover:bg-white/10"
           >
             <Mail size={17} />
           </a>
         </div>
 
-        <p className="mt-20 font-mono text-xs text-[rgb(var(--ink-dim))]">
+        <p className="mt-20 font-mono text-xs text-white/50">
           © {new Date().getFullYear()} {profile.name}.
         </p>
       </div>

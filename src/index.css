@@ -21,6 +21,21 @@
   --accent-ink: 8 9 12;
 }
 
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* light, same violet accent for brand continuity */
+  --bg: 250 250 252;
+  --bg-elevated: 255 255 255;
+  --bg-soft: 241 241 246;
+  --ink: 17 17 22;
+  --ink-dim: 100 100 112;
+  --line: 17 17 22;
+  --line-soft: 222 222 230;
+  --accent: 124 92 255;
+  --accent-ink: 255 255 255;
+}
+
 * {
   box-sizing: border-box;
 }
