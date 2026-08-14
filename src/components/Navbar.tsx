@@ -3,6 +3,7 @@ import { Menu, Moon, Sun, X } from "lucide-react";
 import { profile, links } from "../data/content";
 import { GithubIcon } from "./icons";
 import GooeyNav from "./GooeyNav";
+import { playClickSound } from "../hooks/useClickSound";
 import type { Theme } from "../hooks/useTheme";
 
 const NAV_ITEMS = [
@@ -72,7 +73,10 @@ export default function Navbar({
             <GithubIcon size={16} />
           </a>
           <button
-            onClick={onToggleTheme}
+            onClick={() => {
+              playClickSound();
+              onToggleTheme();
+            }}
             aria-label="Toggle theme"
             className="cursor-target flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
           >
