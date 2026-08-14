@@ -14,7 +14,7 @@ export default function InfoList({ items }: { items: InfoItem[] }) {
       {items.map((item) => (
         <div
           key={item.title + item.date}
-          className="flex flex-col gap-2 px-6 py-5 sm:flex-row sm:items-center sm:justify-between sm:gap-4"
+          className="flex flex-col gap-2 px-6 py-5 transition-all duration-300 hover:translate-x-1 hover:bg-[rgb(var(--bg-soft))] sm:flex-row sm:items-center sm:justify-between sm:gap-4"
           style={{ borderColor: "rgb(var(--line-soft))" }}
         >
           <div className="flex items-start gap-3">

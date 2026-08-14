@@ -38,7 +38,7 @@ export default function Projects() {
         </p>
 
         <div
-          className="overflow-hidden rounded-2xl border shadow-sm"
+          className="overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
           style={{
             borderColor: "rgb(var(--line))",
             background: "rgb(var(--bg-elevated))",

@@ -77,7 +77,7 @@ export default function EducationTimeline() {
 
             <div className={`min-w-0 flex-1 ${isLast ? "pb-0" : "pb-6"}`}>
               <div
-                className="rounded-2xl border p-5"
+                className="rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
                 style={{
                   borderColor: "rgb(var(--line-soft))",
                   background: "rgb(var(--bg-elevated))",

@@ -33,7 +33,7 @@ export default function Achievements() {
 
         <div className="flex items-center justify-center">
           <div
-            className="w-full max-w-sm overflow-hidden rounded-2xl border p-8"
+            className="w-full max-w-sm overflow-hidden rounded-2xl border p-8 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
             style={{
               borderColor: "rgb(var(--line-soft))",
               background: "rgb(var(--bg-elevated))",

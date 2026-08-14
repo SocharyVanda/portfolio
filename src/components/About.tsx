@@ -7,7 +7,7 @@ export default function About() {
       <div className="mx-auto grid max-w-4xl items-start gap-10 sm:grid-cols-[minmax(0,260px)_1fr] sm:gap-14">
         <div className="mx-auto w-full max-w-[260px] sm:mx-0">
           <div
-            className="overflow-hidden rounded-3xl border"
+            className="overflow-hidden rounded-3xl border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
             style={{ borderColor: "rgb(var(--line-soft))" }}
           >
             <img
@@ -33,7 +33,7 @@ export default function About() {
             {profile.bio}
           </p>
           <div
-            className="mt-8 rounded-2xl border p-5"
+            className="mt-8 rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
             style={{ borderColor: "rgb(var(--line))" }}
           >
             <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">

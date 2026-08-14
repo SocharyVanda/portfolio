@@ -247,7 +247,7 @@ export default function GitHubStats() {
         </p>
 
         <div
-          className="rounded-2xl border p-6 sm:p-8"
+          className="rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)] sm:p-8"
           style={{ borderColor: "rgb(var(--line))", background: "rgb(var(--bg-soft))" }}
         >
           <div className="mb-6 flex items-center justify-between">
@@ -352,7 +352,7 @@ export default function GitHubStats() {
         {events.length > 0 && (
           <div className="mt-6 grid gap-6 lg:grid-cols-[1fr_260px]">
             <div
-              className="rounded-2xl border p-6"
+              className="rounded-2xl border p-6 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
               style={{ borderColor: "rgb(var(--line))" }}
             >
               <div className="mb-5 flex items-center gap-2">
@@ -414,7 +414,10 @@ export default function GitHubStats() {
                 <p className="font-semibold">Overview</p>
               </div>
 
-              <div className="rounded-2xl border p-5" style={statCardStyle}>
+              <div
+                className="rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
+                style={statCardStyle}
+              >
                 <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
                   Public repos
                 </p>
@@ -423,7 +426,10 @@ export default function GitHubStats() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border p-5" style={statCardStyle}>
+              <div
+                className="rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
+                style={statCardStyle}
+              >
                 <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
                   Followers
                 </p>
@@ -432,7 +438,10 @@ export default function GitHubStats() {
                 </p>
               </div>
 
-              <div className="rounded-2xl border p-5" style={statCardStyle}>
+              <div
+                className="rounded-2xl border p-5 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
+                style={statCardStyle}
+              >
                 <p className="font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
                   Contributions
                 </p>
