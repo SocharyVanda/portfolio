@@ -1,7 +1,6 @@
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "../data/content";
-import { portraitAscii } from "../data/asciiArt";
-import DotMatrix from "./DotMatrix";
+import Particles from "./Particles";
 import TrueFocus from "./TrueFocus";
 
 export default function AsciiHero() {
@@ -10,14 +9,28 @@ export default function AsciiHero() {
       id="top"
       className="relative overflow-hidden px-6 pb-20 pt-32 sm:px-12 sm:pt-40"
     >
-      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+      <div className="absolute inset-0">
+        <Particles
+          particleColors={["#7c5cff", "#ffffff", "#9ee069"]}
+          particleCount={280}
+          particleSpread={12}
+          speed={0.1}
+          particleBaseSize={90}
+          moveParticlesOnHover
+          particleHoverFactor={2}
+          alphaParticles
+          disableRotation={false}
+        />
+      </div>
+
+      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <p className="mb-5 inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]" style={{ borderColor: "rgb(var(--line))" }}>
           <span className="h-1.5 w-1.5 rounded-full bg-[rgb(var(--accent))]" />
           CS Student · UX/UI Designer
         </p>
 
         <TrueFocus
-          sentence="Curious by design, precise by practice."
+          sentence={profile.name}
           loop={false}
           blurAmount={5}
           animationDuration={0.45}
@@ -40,35 +53,8 @@ export default function AsciiHero() {
         </a>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-5xl items-center gap-6 sm:grid-cols-2 sm:gap-8">
-        <div
-          className="flex aspect-square items-center justify-center rounded-3xl p-8"
-          style={{ background: "#0b0b0b" }}
-        >
-          <DotMatrix />
-        </div>
-
-        <div className="flex aspect-square items-center justify-center overflow-hidden">
-          <pre
-            aria-hidden
-            className="select-none text-center leading-none tracking-[-0.02em]"
-            style={{
-              color: "rgb(var(--ink))",
-              fontFamily: "var(--font-mono)",
-              fontSize: "clamp(2.2px, 1.05vw, 5.5px)",
-            }}
-          >
-            {portraitAscii}
-          </pre>
-        </div>
-        <p className="sr-only">
-          ASCII-art portrait of {profile.name}, generated from a photo.
-        </p>
-      </div>
-
-      <div className="mx-auto mt-10 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+      <div className="relative mx-auto mt-20 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
         <span>Phnom Penh, Cambodia</span>
-        <span>portrait.ascii · 130×76</span>
         <span>[ scroll to explore ]</span>
       </div>
     </section>

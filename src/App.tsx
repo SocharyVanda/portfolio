@@ -8,14 +8,11 @@ import MusicPlayer from "./components/MusicPlayer";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
-import { useTheme } from "./hooks/useTheme";
 
 export default function App() {
-  const { theme, toggle } = useTheme();
-
   return (
     <div className="min-h-screen">
-      <Navbar theme={theme} onToggleTheme={toggle} />
+      <Navbar />
       <main>
         <AsciiHero />
         <About />

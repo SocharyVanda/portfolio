@@ -6,33 +6,18 @@
 }
 
 :root {
-  color-scheme: light;
-
-  /* cream terminal — default */
-  --bg: 232 224 195;
-  --bg-elevated: 246 242 227;
-  --bg-soft: 221 212 179;
-  --ink: 22 20 14;
-  --ink-dim: 96 89 63;
-  --line: 22 20 14;
-  --line-soft: 178 167 128;
-  --accent: 107 110 46;
-  --accent-ink: 246 242 227;
-}
-
-:root[data-theme="dark"] {
   color-scheme: dark;
 
-  /* terminal, inverted */
-  --bg: 15 14 11;
-  --bg-elevated: 23 22 17;
-  --bg-soft: 33 31 24;
-  --ink: 232 225 198;
-  --ink-dim: 168 158 122;
-  --line: 232 225 198;
-  --line-soft: 63 59 45;
-  --accent: 158 224 105;
-  --accent-ink: 15 14 11;
+  /* dark gaming / modernistic terminal */
+  --bg: 8 9 12;
+  --bg-elevated: 15 16 21;
+  --bg-soft: 22 24 30;
+  --ink: 232 235 240;
+  --ink-dim: 148 154 166;
+  --line: 232 235 240;
+  --line-soft: 42 45 54;
+  --accent: 124 92 255;
+  --accent-ink: 8 9 12;
 }
 
 * {

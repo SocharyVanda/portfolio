@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-import { Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { profile, links } from "../data/content";
 import { GithubIcon } from "./icons";
 import GooeyNav from "./GooeyNav";
-import type { Theme } from "../hooks/useTheme";
 
 const NAV_ITEMS = [
   { label: "About", href: "#about" },
@@ -15,13 +14,7 @@ const NAV_ITEMS = [
   { label: "Contact", href: "#contact" },
 ];
 
-export default function Navbar({
-  theme,
-  onToggleTheme,
-}: {
-  theme: Theme;
-  onToggleTheme: () => void;
-}) {
+export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -71,13 +64,6 @@ export default function Navbar({
           >
             <GithubIcon size={16} />
           </a>
-          <button
-            onClick={onToggleTheme}
-            aria-label="Toggle theme"
-            className="flex h-8 w-8 items-center justify-center rounded-full text-[rgb(var(--ink-dim))] transition-colors hover:bg-[rgb(var(--bg-soft))] hover:text-[rgb(var(--ink))]"
-          >
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label="Toggle menu"
