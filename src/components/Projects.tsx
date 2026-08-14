@@ -1,119 +1,115 @@
-import { useMemo, useState } from "react";
-import { LayoutGrid, List } from "lucide-react";
+import { useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { projects, type Project } from "../data/content";
-import Folder from "./Folder";
 import FoldText from "./FoldText";
 import ProjectModal from "./ProjectModal";
 
-const FILTERS = ["All Projects", "Researcher", "Designer", "Team"];
+function ProjectCard({
+  project,
+  onOpen,
+}: {
+  project: Project;
+  onOpen: () => void;
+}) {
+  return (
+    <div
+      onClick={onOpen}
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onOpen();
+        }
+      }}
+      className="cursor-target group cursor-pointer overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1.5 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
+      style={{
+        borderColor: "rgb(var(--line))",
+        background: "rgb(var(--bg-elevated))",
+      }}
+    >
+      <div className="relative aspect-[16/10] overflow-hidden">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+        />
+        {project.link && (
+          <a
+            href={project.link.href}
+            target="_blank"
+            rel="noreferrer"
+            onClick={(e) => e.stopPropagation()}
+            className="cursor-target absolute inset-0 flex items-center justify-center gap-2 bg-black/60 text-lg font-semibold text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          >
+            {project.link.label}
+            <ExternalLink size={18} />
+          </a>
+        )}
+      </div>
+
+      <div className="p-6 sm:p-8">
+        <h3 className="text-2xl font-semibold">{project.title}</h3>
+        <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-[rgb(var(--ink-dim))]">
+          {project.writing}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-between gap-3">
+          <span className="font-mono text-xs text-[rgb(var(--ink-dim))]">
+            {project.year ?? ""}
+          </span>
+          {project.tools && project.tools.length > 0 && (
+            <div className="flex flex-wrap gap-2">
+              {project.tools.map((tool) => (
+                <span
+                  key={tool}
+                  className="rounded-full px-3 py-1 font-mono text-xs"
+                  style={{
+                    background: "rgb(var(--bg-soft))",
+                    color: "rgb(var(--ink-dim))",
+                  }}
+                >
+                  {tool}
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Projects() {
   const [active, setActive] = useState<Project | null>(null);
-  const [filter, setFilter] = useState("All Projects");
-
-  const filtered = useMemo(
-    () =>
-      filter === "All Projects"
-        ? projects
-        : projects.filter((p) => p.tags.includes(filter)),
-    [filter],
-  );
 
   return (
     <section id="projects" className="px-6 py-24 sm:px-12 sm:py-32">
       <div className="mx-auto max-w-5xl">
-        <h2 className="mb-2 text-4xl font-semibold sm:text-5xl">
-          <FoldText
-            text="Projects"
-            splitBy="word"
-            trigger="scroll"
-            fontSize="inherit"
-            fontWeight="inherit"
-            color="inherit"
-          />
-        </h2>
-        <p className="mb-10 max-w-lg text-[rgb(var(--ink-dim))]">
-          Click a project to open it. Write-ups are in progress — swap in
-          your own case studies anytime.
-        </p>
-
-        <div
-          className="overflow-hidden rounded-2xl border shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_20px_45px_-20px_rgba(124,92,255,0.35)]"
-          style={{
-            borderColor: "rgb(var(--line))",
-            background: "rgb(var(--bg-elevated))",
-          }}
-        >
-          {/* title bar */}
+        <div className="mb-14 flex items-center gap-8">
+          <h2 className="shrink-0 text-5xl font-semibold sm:text-6xl">
+            <FoldText
+              text="Projects"
+              splitBy="word"
+              trigger="scroll"
+              fontSize="inherit"
+              fontWeight="inherit"
+              color="inherit"
+            />
+          </h2>
           <div
-            className="flex items-center gap-3 border-b px-4 py-3"
-            style={{ borderColor: "rgb(var(--line-soft))" }}
-          >
-            <div className="flex gap-1.5">
-              <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f57]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
-              <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
-            </div>
-            <span className="text-sm font-medium">Projects</span>
-            <div className="ml-auto flex items-center gap-3 text-[rgb(var(--ink-dim))]">
-              <LayoutGrid size={15} />
-              <List size={15} />
-            </div>
-          </div>
+            className="h-px flex-1"
+            style={{ background: "rgb(var(--line))" }}
+          />
+        </div>
 
-          <div className="flex flex-col sm:flex-row">
-            {/* sidebar */}
-            <div
-              className="flex shrink-0 gap-1 overflow-x-auto border-b p-3 sm:w-40 sm:flex-col sm:overflow-visible sm:border-b-0 sm:border-r"
-              style={{ borderColor: "rgb(var(--line-soft))" }}
-            >
-              <p className="hidden px-2 pb-1 font-mono text-[10px] uppercase tracking-widest text-[rgb(var(--ink-dim))] sm:block">
-                Favorites
-              </p>
-              {FILTERS.map((f) => (
-                <button
-                  key={f}
-                  onClick={() => setFilter(f)}
-                  className={`cursor-target shrink-0 rounded-lg px-3 py-1.5 text-left text-sm transition-colors ${
-                    filter === f
-                      ? "bg-[#3d7eff] text-white"
-                      : "text-[rgb(var(--ink-dim))] hover:bg-[rgb(var(--bg-soft))]"
-                  }`}
-                >
-                  {f}
-                </button>
-              ))}
-            </div>
-
-            {/* folder grid */}
-            <div className="flex-1 p-6 pt-10">
-              <div className="grid grid-cols-2 gap-x-4 gap-y-14 sm:grid-cols-3 md:grid-cols-4">
-                {filtered.map((project) => (
-                  <div
-                    key={project.title}
-                    className="flex flex-col items-center gap-4"
-                  >
-                    <div className="flex h-24 w-full items-center justify-center">
-                      <Folder
-                        color={project.color}
-                        size={1.2}
-                        className="cursor-target"
-                        onOpen={() => setActive(project)}
-                      />
-                    </div>
-                    <span className="text-sm font-medium">
-                      {project.title}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              {filtered.length === 0 && (
-                <p className="py-10 text-center text-sm text-[rgb(var(--ink-dim))]">
-                  No projects tagged "{filter}" yet.
-                </p>
-              )}
-            </div>
-          </div>
+        <div className="grid gap-8 sm:grid-cols-2">
+          {projects.map((project) => (
+            <ProjectCard
+              key={project.title}
+              project={project}
+              onOpen={() => setActive(project)}
+            />
+          ))}
         </div>
       </div>
 
