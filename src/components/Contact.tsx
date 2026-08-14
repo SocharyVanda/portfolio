@@ -16,7 +16,7 @@ const NAV_LINKS = [
 ];
 
 const inputStyle = {
-  borderColor: "rgb(var(--line))",
+  borderColor: "rgb(var(--line-soft))",
   background: "rgb(var(--bg-soft))",
 };
 
