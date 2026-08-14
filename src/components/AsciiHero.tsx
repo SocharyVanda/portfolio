@@ -1,5 +1,6 @@
 import { ArrowDownRight } from "lucide-react";
 import { profile } from "../data/content";
+import Lanyard from "./Lanyard";
 import TrueFocus from "./TrueFocus";
 
 export default function AsciiHero() {
@@ -38,7 +39,17 @@ export default function AsciiHero() {
         </a>
       </div>
 
-      <div className="mx-auto mt-20 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
+      <div className="mx-auto -mt-8 h-[420px] w-full max-w-xs sm:h-[520px] sm:max-w-sm">
+        <Lanyard
+          position={[0, 0, 20]}
+          gravity={[0, -40, 0]}
+          frontImage="/photos/lanyard.jpg"
+          backImage="/photos/lanyard.jpg"
+          imageFit="cover"
+        />
+      </div>
+
+      <div className="mx-auto mt-8 flex max-w-5xl flex-wrap items-center justify-between gap-3 font-mono text-[11px] uppercase tracking-widest text-[rgb(var(--ink-dim))]">
         <span>Phnom Penh, Cambodia</span>
         <span>[ scroll to explore ]</span>
       </div>

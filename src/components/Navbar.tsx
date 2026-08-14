@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { profile, links } from "../data/content";
+import Dither from "./Dither";
 import { GithubIcon } from "./icons";
 import GooeyNav from "./GooeyNav";
 
@@ -28,7 +29,7 @@ export default function Navbar() {
   return (
     <header className="fixed inset-x-0 top-4 z-50 flex justify-center px-4">
       <nav
-        className={`flex w-full max-w-4xl items-center justify-between gap-4 rounded-full border px-4 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-shadow ${
+        className={`relative flex w-full max-w-4xl items-center justify-between gap-4 overflow-hidden rounded-full border px-4 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-shadow ${
           scrolled ? "shadow-lg shadow-black/10" : ""
         }`}
         style={{
@@ -39,6 +40,18 @@ export default function Navbar() {
             : "inset 0 1px 0 rgb(var(--bg) / 0.6)",
         }}
       >
+        <div className="pointer-events-none absolute inset-0">
+          <Dither
+            waveColor={[0.24, 0.2, 0.42]}
+            colorNum={4}
+            pixelSize={2}
+            waveAmplitude={0.25}
+            waveFrequency={4}
+            waveSpeed={0.04}
+            enableMouseInteraction={false}
+          />
+        </div>
+
         <a
           href="#top"
           className="cursor-target flex shrink-0 items-center gap-2 pl-1 text-sm font-medium"

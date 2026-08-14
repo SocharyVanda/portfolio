@@ -1,5 +1,6 @@
 import { ArrowRight, FileText, Mail, Send } from "lucide-react";
 import { contact, links, profile } from "../data/content";
+import Dither from "./Dither";
 import FoldText from "./FoldText";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
@@ -11,8 +12,27 @@ export default function Contact() {
   ].filter(Boolean) as { href: string; icon: typeof GithubIcon; label: string }[];
 
   return (
-    <section id="contact" className="px-6 py-24 sm:px-12 sm:py-32">
-      <div className="mx-auto flex max-w-3xl flex-col items-center text-center">
+    <section id="contact" className="relative overflow-hidden px-6 py-24 sm:px-12 sm:py-32">
+      <div className="pointer-events-none absolute inset-0">
+        <Dither
+          waveColor={[0.24, 0.2, 0.42]}
+          colorNum={4}
+          pixelSize={2}
+          waveAmplitude={0.28}
+          waveFrequency={3.5}
+          waveSpeed={0.05}
+          enableMouseInteraction={false}
+        />
+      </div>
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(60% 55% at 50% 45%, rgb(var(--bg) / 0.6) 0%, rgb(var(--bg) / 0.1) 65%, transparent 100%)",
+        }}
+      />
+
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <h2 className="text-balance text-4xl font-semibold sm:text-6xl">
           <FoldText
             text={"Let's build something\nworth designing."}
