@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
 import { contact, links, profile } from "../data/content";
+import Ballpit from "./Ballpit";
 import FoldText from "./FoldText";
 import { GithubIcon, LinkedinIcon } from "./icons";
 
@@ -160,13 +161,26 @@ export default function Contact() {
       </section>
 
       <footer
-        className="border-t px-6 py-16 sm:px-12"
+        className="relative overflow-hidden border-t px-6 py-16 sm:px-12"
         style={{
           borderColor: "rgb(var(--line))",
           background: "rgb(var(--bg-soft))",
         }}
       >
-        <div className="mx-auto grid max-w-5xl gap-12 sm:grid-cols-3">
+        <div className="pointer-events-none absolute inset-0 opacity-70">
+          <Ballpit
+            count={80}
+            gravity={0.3}
+            friction={0.9975}
+            wallBounce={0.9}
+            followCursor
+            colors={[0x7c5cff, 0x38bdf8, 0x2dd4bf]}
+            minSize={0.4}
+            maxSize={0.9}
+          />
+        </div>
+
+        <div className="relative mx-auto grid max-w-5xl gap-12 sm:grid-cols-3">
           <div>
             <p className="text-xl font-semibold">{profile.name}</p>
             <p className="mt-3 max-w-xs text-sm leading-relaxed text-[rgb(var(--ink-dim))]">
